@@ -1,0 +1,20 @@
+machine:
+  node:
+    version: 10.15.3
+
+  environment:
+    NODE_ENV: 'test'
+
+general:
+  artifacts:
+    - ~/coverage.tar
+
+dependencies:
+  pre:
+    - echo -e $npmrc > ~/.npmrc
+
+test:
+  post:
+    - yarn lint
+    - yarn enforce
+    - rm -rf $CIRCLE_ARTIFACTS/* && tar cvf ~/coverage.tar coverage
