@@ -3,14 +3,16 @@ orbs:
   node: circleci/node@3.0.0
 jobs:
   migrate-db:
+    docker:
+      - image: circleci/node:3.0.0
     steps:
       - run: npm run db:setup:user
       - run: npm run db:reset
   test:
     steps:
-      - npm run test
-      - npm run enforce
-      - npm run lint
+      - run: npm run test
+      - run: npm run enforce
+      - run: npm run lint
 workflows:
   node-tests:
     jobs:
