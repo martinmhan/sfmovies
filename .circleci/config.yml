@@ -9,6 +9,8 @@ jobs:
       - run: npm run db:setup:user
       - run: npm run db:reset
   test:
+    docker:
+      - image: circleci/node:3.0.0
     steps:
       - run: npm run test
       - run: npm run enforce
