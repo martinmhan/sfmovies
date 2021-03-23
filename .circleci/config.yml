@@ -6,12 +6,14 @@ jobs:
     docker:
       - image: node:current-alpine
     steps:
+      - checkout
       - run: npm run db:setup:user
       - run: npm run db:reset
   test:
     docker:
       - image: node:current-alpine
     steps:
+      - checkout
       - run: npm run test
       - run: npm run enforce
       - run: npm run lint
