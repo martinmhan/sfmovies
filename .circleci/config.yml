@@ -4,7 +4,7 @@ orbs:
 jobs:
   migrate-db:
     docker:
-      - image: circleci/postgres:latest
+      - image: spittet/node-postgresql
     steps:
       - checkout
       - run: npm run db:setup:user
