@@ -1,24 +1,7 @@
 version: 2.1
 orbs:
-  node: circleci/node@4.2.0
-jobs:
-  migrate-db:
-    docker:
-      - image: spittet/node-postgresql
-    steps:
-      - checkout
-      - run: npm run db:setup:user
-      - run: npm run db:reset
-  test:
-    docker:
-      - image: node:current-alpine
-    steps:
-      - checkout
-      - run: npm run test
-      - run: npm run enforce
-      - run: npm run lint
+  node: circleci/node@3.0.0
 workflows:
   node-tests:
     jobs:
-      - migrate-db
-      - test
+      - node/test
