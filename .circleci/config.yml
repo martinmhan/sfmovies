@@ -4,13 +4,13 @@ orbs:
 jobs:
   migrate-db:
     docker:
-      - image: circleci/node:10.15.3
+      - image: node:current-alpine
     steps:
       - run: npm run db:setup:user
       - run: npm run db:reset
   test:
     docker:
-      - image: circleci/node:10.15.3
+      - image: node:current-alpine
     steps:
       - run: npm run test
       - run: npm run enforce
